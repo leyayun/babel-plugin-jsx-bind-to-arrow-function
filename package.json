@@ -1,0 +1,20 @@
+{
+  "name": "babel-plugin-jsx-bind-to-arrow-function",
+  "version": "1.0.0",
+  "description": "babel-plugin-jsx-bind-to-arrow-function",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "keywords": [
+    "babel"
+  ],
+  "author": "leyayun",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "colors": "^1.1.2"
+  }
+}
