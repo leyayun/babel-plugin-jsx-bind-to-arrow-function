@@ -4,6 +4,6 @@ class Fake extends Component {
   }
   finish() {}
   render() {
-    return <div onClick={() => this.finish()}>haha</div>;
+    return <div onClick={(...args) => this.finish(this.a, ...args)}>haha</div>;
   }
 }

@@ -3,10 +3,14 @@ module.exports = function ({ types: t }) {
   const CallExpressionVisitor = {
     CallExpression(path) {
       if (path.node.callee.property.name === 'bind') {
-        const parmas = path.node.arguments.slice(1);
+        const args = path.node.arguments.slice(1);
+        const restEleArg = t.Identifier('args');
+        const restEle = t.RestElement(restEleArg);
+        const spreadEle = t.SpreadElement(restEleArg);
+        args.push(spreadEle);
         const memberExpression = path.get('callee').get('object');
-        const expresstion = t.CallExpression(memberExpression.node, parmas);
-        const arrowFunctionExpression = t.ArrowFunctionExpression(parmas, expresstion);
+        const expresstion = t.CallExpression(memberExpression.node, args);
+        const arrowFunctionExpression = t.ArrowFunctionExpression([restEle], expresstion);
         path.replaceWith(arrowFunctionExpression);
       }
     }
